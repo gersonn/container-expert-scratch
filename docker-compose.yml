@@ -1,0 +1,30 @@
+version: "3.7"
+
+volumes:
+  redis-vol:
+
+networks:
+  mired: 
+
+services:
+  anyApp:
+    build:
+      context: src/${PROJECT_LANG:-python}
+    image: ${DOCKER_REPO:-gersonn}/${PROJECT_LANG:-python}-expert:v1.0
+    environment:
+      - FOO=bar
+      - VAR=var
+      - REDIS_HOST=db
+    init: true
+    ports:
+      - 9090:8080
+    networks:
+      - mired
+
+  db:
+    image: redis:alpine
+    restart: on-failure
+    networks:
+      - mired
+    volumes:
+      - redis-vol:/data
