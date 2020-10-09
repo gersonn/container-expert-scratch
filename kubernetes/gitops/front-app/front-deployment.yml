@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: front
-          image: kontinu/python-expert:v1.0
+          image: 687761556069.dkr.ecr.us-east-1.amazonaws.com/bootcamp:d99a916
           ports:
             - containerPort: 8080
           env:
