@@ -5,6 +5,7 @@ metadata:
   labels:
     name: front
 spec:
+  replicas: 2
   selector:
     matchLabels:
       name: front
